@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Bride and the Substack"
-date:   2024-02-16 17:43:000 +1000
+date:   2024-02-16 00:00:000 +1000
 categories: erin
 ---
 My beautiful bride, Erin Gillard, has a free Substack (a blog) titled “[By His Grace and For His Glory](https://eringillard.substack.com)”.
