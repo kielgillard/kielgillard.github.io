@@ -4,7 +4,7 @@ title:  "Immortal Souls — Chapter 1"
 date:   2024-11-14 00:00:000 +1000
 categories: Immortal Souls Ed Feser book journal
 ---
-I am reading [Dr Edward Feser](http://www.edwardfeser.com)’s latest book, [Immortal Souls](https://booko.com.au/9783868386059) and "journaling" as I go. A sample of the book can be read on [Google Books](https://www.google.com.au/books/edition/Immortal_Souls/X-ceEQAAQBAJ?hl=en&gbpv=1&printsec=frontcover).
+I have read chapter 1 of [Dr Edward Feser](http://www.edwardfeser.com)’s latest book, [Immortal Souls](https://booko.com.au/9783868386059) and "journaling" as I go. A sample of the book can be read on [Google Books](https://www.google.com.au/books/edition/Immortal_Souls/X-ceEQAAQBAJ?hl=en&gbpv=1&printsec=frontcover).
 
 Chapter 1 starts with the question: what is the nature of the mind? The answer: thinking and willing. Ed takes inspiration from St Augustine to kick it off. When I reflect on asking myself this question of my own mind, I discover three certain things. First, know that I am. Similar to Descartes “I think, therefore I am”, I am certain of my existence. A non-existing me could not doubt this. Second, I know that thinking is in the nature of the mind because that is what I am doing. This too is undeniable for to deny that I am thinking just is to know that I am thinking. Finally, I know that willing is in the nature of the mind because I desire to ask the question. To deny this, I would have to resolve to think about something else, which only proves willing is in the nature of the mind. 
 
