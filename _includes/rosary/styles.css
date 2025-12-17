@@ -1,0 +1,841 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #333;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
+    position: relative;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#mystery-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.mystery-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+
+.mystery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+.mystery-card.today {
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.mystery-card.focused,
+.mystery-card:focus {
+    outline: 4px solid #667eea !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6) !important;
+}
+
+.mystery-card.today.focused,
+.mystery-card.today:focus {
+    border: 3px solid #ffd700;
+    outline: 4px solid #667eea !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6), 0 0 20px rgba(255, 215, 0, 0.5) !important;
+}
+
+.mystery-card.today::before {
+    content: "Today's Mystery";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffd700;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.mystery-card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.mystery-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.mystery-art-gallery {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #667eea #f1f1f1;
+}
+
+.mystery-art-gallery::-webkit-scrollbar {
+    height: 6px;
+}
+
+.mystery-art-gallery::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.mystery-art-gallery::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.mystery-art {
+    flex: 0 0 auto;
+    width: calc(33.333% - 6px);
+    min-width: 180px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    scroll-snap-align: start;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.mystery-art:hover {
+    transform: scale(1.05);
+}
+
+/* Single image takes full width */
+.mystery-art-gallery img:only-child {
+    width: 100%;
+    min-width: 100%;
+}
+
+#john-paul-reflections {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.jp2-reflection {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.jp2-reflection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.reflection-mystery-title {
+    font-size: 1.3rem;
+    color: #667eea;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.reflection-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.reflection-source {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+#rosary-overview {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.jpii-summary {
+    width: 100%;
+}
+
+.jpii-summary h3 {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.jpii-summary p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.jpii-summary .summary-source {
+    text-align: right;
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.rosary-structure {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.bead-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.bead {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    border: 2px solid #764ba2;
+}
+
+.bead.ourFather {
+    background: #d2b48c;
+    border: 2px solid #a0826d;
+}
+
+.bead.hailMary {
+    background: #add8e6;
+    border: 2px solid #87ceeb;
+}
+
+.bead.gloryBe {
+    background: #667eea;
+    border: 2px solid #764ba2;
+}
+
+.bead.crucifix {
+    width: 30px;
+    height: 40px;
+    border-radius: 5px;
+    background: #8b4513;
+    border: 2px solid #654321;
+    position: relative;
+}
+
+.bead.crucifix::after {
+    content: "✝";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2rem;
+}
+
+.bead-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px;
+    min-width: 120px;
+}
+
+#mystery-beads {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+.mystery-beads-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mystery-bead {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.mystery-bead:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.mystery-bead.ourFather {
+    background: #d2b48c;
+    border-color: #a0826d;
+}
+
+.mystery-bead.hailMary {
+    background: #add8e6;
+    border-color: #87ceeb;
+}
+
+.mystery-bead.completed.ourFather {
+    background: #a0826d;
+    border-color: #8b6f47;
+    opacity: 0.7;
+}
+
+.mystery-bead.completed.hailMary {
+    background: #87ceeb;
+    border-color: #6bb6d6;
+    opacity: 0.7;
+}
+
+.mystery-bead.active {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    animation: pulse 1s infinite;
+    z-index: 10;
+    position: relative;
+}
+
+.mystery-bead.active.ourFather {
+    background: #d2b48c;
+    border-color: #ffd700;
+}
+
+.mystery-bead.active.hailMary {
+    background: #add8e6;
+    border-color: #ffd700;
+}
+
+.progress-rosary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-middle {
+    display: flex;
+    align-items: stretch;
+    min-height: 80px;
+    width: 100%;
+}
+
+.progress-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-spacer {
+    min-width: 150px;
+    max-width: 300px;
+    flex: 1;
+}
+
+.bead-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-row .bead-wrapper {
+    flex-direction: row;
+}
+
+.progress-col .bead-wrapper {
+    flex-direction: column;
+}
+
+.progress-bead {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ddd;
+    border: 2px solid #999;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.progress-bead:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.bead-connector {
+    background: #999;
+    z-index: 1;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.bead-connector.completed {
+    background: #667eea;
+}
+
+.bead-connector-right {
+    width: 25px;
+    height: 2px;
+    margin-left: 2px;
+}
+
+.bead-connector-down {
+    width: 2px;
+    height: 25px;
+    margin-top: 2px;
+}
+
+.bead-connector-left {
+    width: 25px;
+    height: 2px;
+    margin-right: 2px;
+}
+
+.bead-connector-up {
+    width: 2px;
+    height: 25px;
+    margin-bottom: 2px;
+}
+
+.progress-bead.ourFather {
+    background: #d2b48c;
+    border: 2px solid #a0826d;
+}
+
+.progress-bead.hailMary {
+    background: #add8e6;
+    border: 2px solid #87ceeb;
+}
+
+.progress-bead.gloryBe {
+    background: #667eea;
+    border: 2px solid #764ba2;
+}
+
+.progress-bead.active {
+    width: 28px;
+    height: 28px;
+    background: #ffd700;
+    border: 3px solid #ff8c00;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    animation: pulse 1s infinite;
+    z-index: 3;
+}
+
+.progress-bead.active.ourFather {
+    background: #d2b48c;
+}
+
+.progress-bead.active.hailMary {
+    background: #add8e6;
+}
+
+.progress-bead.active.gloryBe {
+    background: #ffd700;
+}
+
+.progress-bead.completed {
+    background: #667eea;
+    border-color: #764ba2;
+}
+
+.progress-bead.completed.ourFather {
+    background: #d2b48c;
+    border-color: #a0826d;
+}
+
+.progress-bead.completed.hailMary {
+    background: #add8e6;
+    border-color: #87ceeb;
+}
+
+.progress-bead.completed.gloryBe {
+    background: #667eea;
+    border-color: #764ba2;
+}
+
+.progress-bead.crucifix {
+    width: 25px;
+    height: 35px;
+    border-radius: 5px;
+    background: #8b4513;
+    border: 2px solid #654321;
+}
+
+.progress-bead.crucifix.active {
+    width: 32px;
+    height: 45px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#prayer-content {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#prayer-title {
+    font-size: 1.8rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#prayer-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#fatima-prayer-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
+}
+
+#fatima-prayer-title {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#fatima-prayer-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
+}
+
+#catechism-quote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff9e6;
+    border-left: 4px solid #d2b48c;
+    border-radius: 5px;
+}
+
+#catechism-reference {
+    font-size: 0.95rem;
+    color: #666;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.catechism-reference-link {
+    color: #d2b48c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.catechism-reference-link:hover {
+    color: #a0826d;
+    text-decoration: underline;
+}
+
+#john-paul-reflection {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f0f4ff;
+    border-left: 4px solid #667eea;
+    border-radius: 5px;
+}
+
+#john-paul-reference {
+    font-size: 0.95rem;
+    color: #666;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+#scripture-quote {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    border-radius: 5px;
+}
+
+#scripture-reference {
+    font-size: 1rem;
+    color: #666;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.bible-reference-link {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bible-reference-link:hover {
+    color: #5568d3;
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+#start-prayer-btn {
+    display: block;
+    margin: 30px auto;
+    width: 200px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.btn-home:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Full screen support */
+@media (display-mode: fullscreen) {
+    body {
+        overflow: hidden;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    #mystery-list {
+        grid-template-columns: 1fr;
+    }
+    
+    #prayer-text {
+        font-size: 1.1rem;
+    }
+    
+    .progress-bead {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .progress-bead.active {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .btn-home {
+        top: 10px;
+        left: 10px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .mystery-art {
+        min-width: 150px;
+        height: 120px;
+    }
+}
+

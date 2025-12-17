@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Scriptural Rosary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen active">
+            <h1>Scriptural Rosary</h1>
+            <div id="mystery-list"></div>
+        </div>
+
+        <!-- Overview Screen -->
+        <div id="overview-screen" class="screen">
+            <button id="home-btn-overview" class="btn-home">Home</button>
+            <h2 id="overview-title"></h2>
+            <div id="rosary-overview"></div>
+            <button id="start-prayer-btn" class="btn-primary">Begin Prayer</button>
+        </div>
+
+        <!-- Prayer Screen -->
+        <div id="prayer-screen" class="screen">
+            <button id="home-btn-prayer" class="btn-home">Home</button>
+            <div id="prayer-content">
+                <div id="prayer-title"></div>
+                <div id="prayer-text"></div>
+                <div id="fatima-prayer-section" class="hidden">
+                    <div id="fatima-prayer-title"></div>
+                    <div id="fatima-prayer-text"></div>
+                </div>
+                <div id="catechism-quote" class="hidden"></div>
+                <div id="catechism-reference" class="hidden"></div>
+                <div id="john-paul-reflection" class="hidden"></div>
+                <div id="john-paul-reference" class="hidden"></div>
+                <div id="scripture-quote" class="hidden"></div>
+                <div id="scripture-reference" class="hidden"></div>
+            </div>
+            <div id="mystery-beads" class="hidden"></div>
+            <div class="button-group">
+                <button id="back-btn" class="btn-secondary">Back</button>
+                <button id="next-btn" class="btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
