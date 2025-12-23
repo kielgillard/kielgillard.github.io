@@ -2,7 +2,7 @@
 layout: post
 title:  "Scriptural Rosary web app"
 date:   2025-12-23 00:00:000 +1000
-categories: web app scriptural rosary
+categories: web app scriptural rosary generative AI spec driven development
 ---
 I used [Cursor](https://cursor.com/) to help build a [Scriptural Rosary web app](https://kielgillard.github.io/scriptural-rosary/).
 
